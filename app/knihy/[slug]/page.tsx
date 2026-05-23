@@ -25,7 +25,7 @@ export async function generateMetadata({
 
   return {
     title: `${book.title} — maturitní rozbor`,
-    description: `Maturitní příprava pro dílo ${book.title}.`
+    description: `Maturitní příprava pro dílo ${book.title} včetně shrnutí, témat a literárního kontextu.`
   };
 }
 
@@ -43,30 +43,77 @@ export default async function BookDetailPage({
 
   return (
     <section className="space-y-6">
-      <Card className="space-y-2">
-        <h1 className="text-2xl font-bold">{book.title}</h1>
+      <Card className="space-y-4">
+        <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Detail knihy</p>
+        <h1 className="text-3xl font-semibold tracking-tight">{book.title}</h1>
         <p className="text-muted-foreground">{book.author}</p>
+        <div className="flex flex-wrap gap-2 text-xs">
+          <span className="rounded-full border border-border px-2 py-1">{book.enrichment.genre}</span>
+          <span className="rounded-full border border-border px-2 py-1">
+            {book.enrichment.literaryPeriod}
+          </span>
+          <span className="rounded-full border border-border px-2 py-1">
+            {book.enrichment.literaryMovement}
+          </span>
+          <span className="rounded-full border border-border px-2 py-1">{book.enrichment.year}</span>
+        </div>
         <p className="text-sm text-muted-foreground">{book.analysis.verificationNote}</p>
-        <Link href="/zkouseni" className="text-sm underline">
-          Spustit AI ústní zkoušení pro náhodně vybranou knihu
+        <Link
+          href="/zkouseni"
+          className="inline-flex w-fit rounded-md border border-border px-3 py-2 text-sm font-medium hover:bg-muted"
+        >
+          Spustit AI ústní zkoušení
         </Link>
       </Card>
 
       <Card className="space-y-3">
-        <h2 className="text-xl font-semibold">A) Charakteristika uměleckého textu</h2>
-        <p className="text-sm text-muted-foreground">
-          I. část, II. část i III. část jsou připravené dle oficiální struktury.
+        <h2 className="text-xl font-semibold">Stručný obsah</h2>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {book.analysis.additionalContent.strucnyObsah}
         </p>
-        <pre className="overflow-x-auto whitespace-pre-wrap rounded-md bg-muted p-3 text-xs">
-          {JSON.stringify(book.analysis.officialStructure, null, 2)}
-        </pre>
+        <div className="grid gap-3 md:grid-cols-2">
+          <div className="rounded-lg border border-border/80 p-4">
+            <h3 className="text-sm font-semibold">Prostředí</h3>
+            <p className="mt-1 text-sm text-muted-foreground">{book.enrichment.setting}</p>
+          </div>
+          <div className="rounded-lg border border-border/80 p-4">
+            <h3 className="text-sm font-semibold">Klíčové postavy</h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {book.enrichment.keyCharacters.join(", ")}
+            </p>
+          </div>
+        </div>
       </Card>
 
       <Card className="space-y-3">
-        <h2 className="text-xl font-semibold">B) Literárněhistorický kontext + doplňkový obsah</h2>
-        <pre className="overflow-x-auto whitespace-pre-wrap rounded-md bg-muted p-3 text-xs">
-          {JSON.stringify(book.analysis.additionalContent, null, 2)}
-        </pre>
+        <h2 className="text-xl font-semibold">A/B struktura k maturitě</h2>
+        <div className="space-y-4">
+          <div className="rounded-lg border border-border/80 p-4">
+            <p className="text-sm font-semibold">A) Charakteristika uměleckého textu</p>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+              <li>{book.analysis.officialStructure.A.I.temaVynatkuACelehoDila}</li>
+              <li>{book.analysis.officialStructure.A.I.casAProstor}</li>
+              <li>{book.analysis.officialStructure.A.II.hlavniAVedlejsiPostavy}</li>
+              <li>{book.analysis.officialStructure.A.III.jazykoveProstredkyAFunkce}</li>
+            </ul>
+          </div>
+          <div className="rounded-lg border border-border/80 p-4">
+            <p className="text-sm font-semibold">B) Literárněhistorický kontext</p>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+              <li>{book.analysis.officialStructure.B.literarniSmer}</li>
+              <li>{book.analysis.officialStructure.B.znakyLiterarnihoObdobi}</li>
+              <li>{book.analysis.officialStructure.B.dalsiVyznacniAutoriStejnehoObdobi}</li>
+            </ul>
+          </div>
+          <div>
+            <p className="text-sm font-semibold">Maturitní tipy</p>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+              {book.enrichment.maturityTips.map((tip) => (
+                <li key={tip}>{tip}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </Card>
 
       <Flashcards items={book.analysis.additionalContent.flashcards} />

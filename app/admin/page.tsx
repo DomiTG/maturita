@@ -33,14 +33,14 @@ export default function AdminPage() {
         <h1 className="text-xl font-semibold">Admin přihlášení</h1>
         <input
           type="email"
-          className="w-full rounded-md border bg-background p-2"
+          className="app-input"
           placeholder="admin@example.com"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
         <input
           type="password"
-          className="w-full rounded-md border bg-background p-2"
+          className="app-input"
           placeholder="••••••••"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
@@ -72,7 +72,7 @@ export default function AdminPage() {
         <h2 className="text-lg font-semibold">Moderace AI výstupu</h2>
         <label className="text-sm">Kniha</label>
         <select
-          className="rounded-md border bg-background p-2"
+          className="app-input"
           value={slug}
           onChange={(event) => setSlug(event.target.value)}
         >
@@ -85,7 +85,7 @@ export default function AdminPage() {
 
         <label className="text-sm">Poznámka editora</label>
         <textarea
-          className="min-h-24 rounded-md border bg-background p-2"
+          className="app-input min-h-24 resize-y"
           value={note}
           onChange={(event) => setNote(event.target.value)}
         />

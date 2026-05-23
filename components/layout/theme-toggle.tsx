@@ -21,7 +21,7 @@ export function ThemeToggle() {
 
   return (
     <Button variant="outline" onClick={toggle} aria-label="Přepnout téma">
-      {dark ? "☀️ Světlý režim" : "🌙 Tmavý režim"}
+      {dark ? "Světlý režim" : "Tmavý režim"}
     </Button>
   );
 }
