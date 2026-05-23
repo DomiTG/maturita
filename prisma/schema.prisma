@@ -1,0 +1,154 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String        @id @default(cuid())
+  email         String        @unique
+  name          String?
+  role          UserRole      @default(STUDENT)
+  passwordHash  String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  examSessions  ExamSession[]
+  userProgress  UserProgress[]
+  favorites     Favorite[]
+}
+
+model Author {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  bio       String?
+  books     Book[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model LiteraryPeriod {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  books       Book[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Book {
+  id               String          @id @default(cuid())
+  slug             String          @unique
+  title            String
+  authorId         String
+  literaryPeriodId String?
+  summary          String?
+  verificationNote String?
+  analysisStatus   AnalysisStatus  @default(PENDING_REVIEW)
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  author           Author          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  literaryPeriod   LiteraryPeriod? @relation(fields: [literaryPeriodId], references: [id], onDelete: SetNull)
+  analyses         Analysis[]
+  quizzes          Quiz[]
+  flashcards       Flashcard[]
+  examSessions     ExamSession[]
+  userProgress     UserProgress[]
+  favorites        Favorite[]
+}
+
+model Analysis {
+  id              String          @id @default(cuid())
+  bookId           String
+  language         String          @default("cs")
+  officialStructure Json
+  additionalContent Json
+  sourceLinks      String[]
+  verificationNote String?
+  status           AnalysisStatus  @default(PENDING_REVIEW)
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  book             Book            @relation(fields: [bookId], references: [id], onDelete: Cascade)
+}
+
+model Quiz {
+  id          String   @id @default(cuid())
+  bookId       String
+  question     String
+  options      Json
+  correctIndex Int
+  explanation  String?
+  language     String   @default("cs")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  book         Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+}
+
+model Flashcard {
+  id        String   @id @default(cuid())
+  bookId     String
+  front      String
+  back       String
+  language   String   @default("cs")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  book       Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+}
+
+model ExamSession {
+  id               String   @id @default(cuid())
+  userId           String
+  bookId           String
+  score            Int?
+  maxScore         Int?
+  difficulty       String?
+  stressMode       Boolean  @default(false)
+  transcript       Json?
+  feedback         String?
+  createdAt        DateTime @default(now())
+
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  book             Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+}
+
+model UserProgress {
+  id              String   @id @default(cuid())
+  userId          String
+  bookId          String
+  completionRate  Int      @default(0)
+  lastActivityAt  DateTime @default(now())
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  book            Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, bookId])
+}
+
+model Favorite {
+  id         String   @id @default(cuid())
+  userId     String
+  bookId     String
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  book       Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, bookId])
+}
+
+enum UserRole {
+  STUDENT
+  ADMIN
+}
+
+enum AnalysisStatus {
+  PENDING_REVIEW
+  VERIFIED
+  NEEDS_UPDATE
+}
