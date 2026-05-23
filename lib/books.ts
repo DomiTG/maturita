@@ -502,3 +502,5 @@ export function createBookAnalysis(enrichment: BookEnrichment) {
       `Data byla doplněna z dostupných literárních zdrojů (${enrichment.source}); před finální školní přípravou je vhodná učitelská revize.`
   };
 }
+
+export const analysisTemplate = createBookAnalysis(fallbackEnrichment);
