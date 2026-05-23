@@ -3,9 +3,10 @@ import { requiredBooks } from "@/lib/books";
 
 export async function GET(
   _request: Request,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
-  const selected = requiredBooks.find((book) => book.slug === params.slug);
+  const { slug } = await context.params;
+  const selected = requiredBooks.find((book) => book.slug === slug);
 
   if (!selected) {
     return NextResponse.json({ error: "Kniha nebyla nalezena." }, { status: 404 });
