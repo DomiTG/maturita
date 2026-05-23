@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { requiredBooks } from "@/lib/books";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -8,8 +8,6 @@ import { Card } from "@/components/ui/card";
 type ExamTurn = {
   question: string;
   answer?: string;
-  score?: number;
-  feedback?: string;
 };
 
 type ExamApiResult = {
@@ -20,6 +18,26 @@ type ExamApiResult = {
   feedback: string;
   difficulty: "lehka" | "stredni" | "tezka";
 };
+
+type Stats = {
+  count: number;
+  average: string;
+};
+
+type SpeechRecognitionAlternative = { transcript: string };
+type SpeechRecognitionResult = { 0: SpeechRecognitionAlternative };
+type SpeechRecognitionEvent = { results: { 0: SpeechRecognitionResult } };
+type BrowserSpeechRecognition = {
+  lang: string;
+  onresult: ((event: SpeechRecognitionEvent) => void) | null;
+  start: () => void;
+};
+
+declare global {
+  interface Window {
+    webkitSpeechRecognition?: new () => BrowserSpeechRecognition;
+  }
+}
 
 const RANDOM_BOOK = () => requiredBooks[Math.floor(Math.random() * requiredBooks.length)];
 
@@ -36,15 +54,21 @@ export function ExamClient() {
   const [difficulty, setDifficulty] = useState("lehka");
   const [timeLeft, setTimeLeft] = useState(120);
   const [loading, setLoading] = useState(false);
+  const [stats, setStats] = useState<Stats>({ count: 0, average: "0.0" });
   const answerRef = useRef<HTMLTextAreaElement>(null);
 
-  const stats = useMemo(() => {
+  const recalculateStats = () => {
     const attempts = JSON.parse(localStorage.getItem("examAttempts") || "[]") as number[];
     const average = attempts.length
       ? (attempts.reduce((sum, value) => sum + value, 0) / attempts.length).toFixed(1)
       : "0.0";
-    return { count: attempts.length, average };
-  }, [lastScore]);
+    setStats({ count: attempts.length, average });
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    recalculateStats();
+  }, []);
 
   useEffect(() => {
     if (!question) return;
@@ -83,6 +107,7 @@ export function ExamClient() {
       const attempts = JSON.parse(localStorage.getItem("examAttempts") || "[]") as number[];
       attempts.push(data.score);
       localStorage.setItem("examAttempts", JSON.stringify(attempts));
+      recalculateStats();
     }
   };
 
@@ -113,14 +138,14 @@ export function ExamClient() {
   };
 
   const speechToText = () => {
-    const SpeechRecognition =
-      (window as Window & { webkitSpeechRecognition?: any }).webkitSpeechRecognition;
+    if (typeof window === "undefined") return;
+    const SpeechRecognition = window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) return;
 
     const recognition = new SpeechRecognition();
     recognition.lang = "cs-CZ";
-    recognition.onresult = (event: any) => {
+    recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
       setAnswer((prev) => `${prev} ${transcript}`.trim());
     };

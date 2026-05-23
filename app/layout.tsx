@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Providers } from "@/components/providers";
-
-const inter = Inter({ subsets: ["latin", "latin-ext"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://example.com"),
@@ -29,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className="font-sans">
         <Providers>
           <SiteHeader />
           <main className="mx-auto w-full max-w-6xl px-4 py-8">{children}</main>
