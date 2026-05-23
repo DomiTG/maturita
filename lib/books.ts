@@ -44,12 +44,13 @@ export const requiredBooks: BookSeed[] = [
 export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
   "romeo-a-julie": {
     year: "1597",
+    originalTitle: "Romeo and Juliet",
     literaryPeriod: "Renesance",
     literaryMovement: "Alžbětinské drama",
     genre: "Tragédie",
     setting: "Verona, Itálie",
     summary:
-      "Příběh dvou mladých milenců z nepřátelských rodů končí tragicky a odhaluje ničivost rodové nenávisti.",
+      "Romeo Montague a Julie Kapuletová se tajně zamilují navzdory krvavému nepřátelství svých rodů. Série unáhlených rozhodnutí, duelů a nedorozumění vyústí v jejich smrt, která teprve následně přiměje oba rody ke smíru.",
     themes: ["láska vs. nenávist", "osud", "konflikt generací", "smrt"],
     keyCharacters: ["Romeo", "Julie", "Merkucio", "Tybalt", "Páter Vavřinec"],
     maturityTips: [
@@ -66,7 +67,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Balada",
     setting: "Noční jízda krajinou",
     summary:
-      "Otec veze nemocného syna, který slyší svůdný hlas Krále duchů; závěr přináší smrt dítěte.",
+      "Během noční jízdy veze otec syna krajinou, zatímco dítě slyší naléhavý a svůdný hlas Krále duchů. Otec všechny vjemy racionálně vysvětluje, ale po dojezdu zjistí, že syn je mrtvý.",
     themes: ["strach", "smrt", "střet racionality a fantazie"],
     keyCharacters: ["vypravěč", "otec", "syn", "Král duchů"],
     maturityTips: [
@@ -83,7 +84,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Epistolární román",
     setting: "Německo 18. století",
     summary:
-      "Wertherova nenaplněná láska k Lottě a citová nevyrovnanost vedou k tragické sebevraždě.",
+      "Citově vyhraněný Werther se zamiluje do Lotty, která je však zasnoubena s rozumným Albertem. Neschopnost sladit své ideály s realitou ho vede k izolaci, psychickému rozpadu a sebevraždě.",
     themes: ["individualismus", "nenaplněná láska", "cit vs. rozum"],
     keyCharacters: ["Werther", "Lotta", "Albert"],
     maturityTips: [
@@ -100,7 +101,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Komedie",
     setting: "Měšťanské prostředí",
     summary:
-      "Harpagonova posedlost penězi ničí rodinné vztahy a odhaluje směšnost lidské chamtivosti.",
+      "Bohatý Harpagon podřizuje rodinu i vlastní rozhodnutí chorobné posedlosti penězi. Jeho lakota rozvrací vztahy i sňatkové plány dětí, až komické odhalení ukáže směšnost i nebezpečí krajní chamtivosti.",
     themes: ["lakota", "pokrytectví", "rodinné konflikty"],
     keyCharacters: ["Harpagon", "Élisa", "Kleantos", "Mariana"],
     maturityTips: [
@@ -117,7 +118,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Lyricko-epická báseň",
     setting: "Noční pokoj vypravěče",
     summary:
-      "Truchlící muž rozmlouvá s tajemným havranem, jehož odpověď „Nevermore“ prohlubuje beznaděj.",
+      "Osamělý vypravěč truchlí po smrti Lenory, když do jeho pokoje vstoupí havran opakující slovo „Nevermore“. Refrén ptáka postupně proměňuje žal v existenciální zoufalství a náznak šílenství.",
     themes: ["smutek", "ztráta", "šílenství", "symbol smrti"],
     keyCharacters: ["lyrický subjekt", "havran", "Lenora"],
     maturityTips: [
@@ -134,7 +135,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Satirická komedie",
     setting: "Provinční ruské město",
     summary:
-      "Úředníci si spletou bezvýznamného Chlestakova se státním revizorem a sami odhalí vlastní korupci.",
+      "Vystrašení provinční úředníci považují malicherného podvodníka Chlestakova za tajného státního revizora. Ve snaze zachránit se uplácejí, lžou a ponižují, čímž sami odhalují rozsah své korupce i morálního úpadku.",
     themes: ["korupce", "maloměšťáctví", "moc a strach"],
     keyCharacters: ["Chlestakov", "hejtman", "úředníci města"],
     maturityTips: [
@@ -145,12 +146,13 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
   },
   "tyrolske-elegie": {
     year: "1852",
+    originalTitle: "Tyrolské elegie",
     literaryPeriod: "Český národní obrození",
     literaryMovement: "Politická satira",
     genre: "Satirická skladba",
     setting: "Cesta do Brixenu",
     summary:
-      "Autor ironicky komentuje vlastní deportaci a kritizuje rakouský absolutismus.",
+      "Havlíček v satiricky laděné básnické skladbě popisuje své zatčení a cestu do brixenského vyhnanství. Ironií a sebeironií obnažuje absurditu policejního státu i mechanismy rakouského absolutismu.",
     themes: ["svoboda slova", "politická represe", "ironie"],
     keyCharacters: ["lyrický subjekt", "státní moc"],
     maturityTips: [
@@ -167,7 +169,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Novela",
     setting: "Paříž během 1. světové války",
     summary:
-      "Křehký milostný příběh mladého páru vrcholí tragicky při bombardování kostela.",
+      "Mladí lidé Petr a Lucie si uprostřed válečné Paříže vytvoří křehký prostor intimity a naděje. Jejich vztah je však zničen bombardováním kostela, čímž novela podtrhuje absurditu války a ztrátu nevinnosti.",
     themes: ["láska v čase války", "pacifismus", "ztráta mládí"],
     keyCharacters: ["Petr", "Lucie"],
     maturityTips: [
@@ -184,7 +186,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Filozofická pohádka",
     setting: "Poušť a planety",
     summary:
-      "Pilot v poušti potkává Malého prince, který skrze setkání s dospělými odhaluje smysl přátelství a odpovědnosti.",
+      "Pilot havarovaný v poušti naslouchá příběhu Malého prince, jenž putoval po planetách a poznával omezenost dospělého světa. Setkání s liškou i motiv růže vedou k pochopení, že podstatné je očím neviditelné a že láska nese odpovědnost.",
     themes: ["dětství", "odpovědnost", "přátelství", "kritika dospělých"],
     keyCharacters: ["Malý princ", "pilot", "liška", "růže"],
     maturityTips: [
@@ -201,7 +203,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Společenský román",
     setting: "Long Island a New York 20. léta",
     summary:
-      "Nick Carraway sleduje vzestup a pád Jaye Gatsbyho, který marně usiluje o návrat ztracené lásky.",
+      "Vypravěč Nick Carraway sleduje okázalý svět bohatých dvacátých let, v němž Jay Gatsby buduje mýtus vlastní osoby, aby získal Daisy. Jeho sen se střetává s cynismem a třídní uzavřeností společnosti, což končí tragicky.",
     themes: ["americký sen", "iluze", "společenská nerovnost"],
     keyCharacters: ["Jay Gatsby", "Nick Carraway", "Daisy Buchanan", "Tom Buchanan"],
     maturityTips: [
@@ -218,7 +220,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Detektivní román",
     setting: "Dartmoor, Anglie",
     summary:
-      "Sherlock Holmes a Watson vyšetřují údajné rodové prokletí Baskervillů na ponurých vřesovištích.",
+      "Sherlock Holmes s doktorem Watsonem prověřují údajné nadpřirozené prokletí rodu Baskervillů na dartmoorských vřesovištích. Vyšetřování postupně odhalí promyšlený zločin, který se skrýval za legendou o démonickém psu.",
     themes: ["racionalita vs. pověra", "tajemství", "zločin a trest"],
     keyCharacters: ["Sherlock Holmes", "Dr. Watson", "Sir Henry Baskerville"],
     maturityTips: [
@@ -235,7 +237,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Deník",
     setting: "Amsterdam během nacistické okupace",
     summary:
-      "Autentické zápisky dospívající dívky skrývající se před deportací zachycují strach i naději.",
+      "Deníkové záznamy Anny Frankové zachycují každodenní život v úkrytu během nacistické okupace Amsterdamu. Vedle strachu a napětí text ukazuje i dospívání, konflikty, sny a mimořádnou víru v lidskost.",
     themes: ["holokaust", "dospívání", "lidská důstojnost"],
     keyCharacters: ["Anna Franková", "rodina Frankových", "obyvatelé zadního domu"],
     maturityTips: [
@@ -252,7 +254,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Fantasy román pro mládež",
     setting: "Bradavice a kouzelnický svět",
     summary:
-      "Harry objevuje svou minulost i vlastní identitu a v prvním školním roce se střetává s návratem zla.",
+      "Sirotek Harry Potter vstupuje do kouzelnického světa, poznává původ své minulosti a vytváří pevná přátelství. První rok v Bradavicích vrcholí odhalením spiknutí kolem Kamene mudrců a prvním střetem s Voldemortovou mocí.",
     themes: ["přátelství", "dobro a zlo", "dospívání", "odvaha"],
     keyCharacters: ["Harry Potter", "Hermiona Grangerová", "Ron Weasley", "Voldemort"],
     maturityTips: [
@@ -269,7 +271,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Novela",
     setting: "Kalifornie v době hospodářské krize",
     summary:
-      "Dva nádeníci sní o vlastním domově, ale jejich sen rozbije sociální realita i lidská slabost.",
+      "Nádeníci George a Lennie putují Kalifornií s vizí vlastního hospodářství a důstojného života. Tvrdé sociální podmínky, osamělost i Lennieho nezvladatelná síla jejich americký sen definitivně zničí.",
     themes: ["americký sen", "samota", "odpovědnost", "milosrdenství"],
     keyCharacters: ["George", "Lennie", "Candy", "Curleyho žena"],
     maturityTips: [
@@ -279,13 +281,14 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     source: "Open Library / Steinbeck Center"
   },
   fimfarum: {
-    year: "1960",
+    year: "1958",
+    originalTitle: "Fimfárum",
     literaryPeriod: "Česká poválečná literatura",
     literaryMovement: "Moderní autorská pohádka",
     genre: "Soubor pohádek",
     setting: "Různá pohádková prostředí",
     summary:
-      "Werichovy pohádky kombinují lidovou tradici, humor a ironii, často s civilním ponaučením.",
+      "Soubor autorských pohádek navazuje na lidovou tradici, ale převrací ji civilním jazykem, humorem a ironií. Werich skrze nadsázku komentuje lidskou malost, vychytralost i zdravý selský rozum.",
     themes: ["lidová moudrost", "humor", "spravedlnost"],
     keyCharacters: ["pohádkové postavy", "vypravěč"],
     maturityTips: [
@@ -296,12 +299,13 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
   },
   krysar: {
     year: "1915",
+    originalTitle: "Krysař",
     literaryPeriod: "Česká moderna",
     literaryMovement: "Symbolismus a novoromantismus",
     genre: "Novela",
     setting: "Město Hammeln",
     summary:
-      "Tajemný Krysař pomstí zradu města zhoubnou píšťalou a odvádí obyvatele do zkázy.",
+      "Do města Hammeln přichází tajemný Krysař, který je po zradě a morálním selhání obyvatel potrestá zhoubnou melodií. Novela propojuje milostný motiv s symbolistní vizí viny, pomsty a davové slepoty.",
     themes: ["vina a trest", "msta", "davová manipulace"],
     keyCharacters: ["Krysař", "Anežka", "Kristián", "obyvatelé Hammelnu"],
     maturityTips: [
@@ -318,7 +322,7 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
     genre: "Drama",
     setting: "Továrna na roboty",
     summary:
-      "Lidstvo vyrábí roboty pro pohodlí, ale ztrácí odpovědnost; vzpoura robotů vede k civilizačnímu kolapsu.",
+      "Společnost R.U.R. vyrábí umělé dělníky, aby lidstvo zbavila práce a starostí. Ztráta etiky a dehumanizace však vyústí ve vzpouru robotů a pád civilizace, z něhož vystupuje otázka, co činí člověka člověkem.",
     themes: ["technologický pokrok", "odcizení práce", "etika vědy"],
     keyCharacters: ["Helena Gloryová", "Domin", "Radius", "Alquist"],
     maturityTips: [
@@ -329,12 +333,13 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
   },
   "smrt-krasnych-srncu": {
     year: "1971",
+    originalTitle: "Smrt krásných srnců",
     literaryPeriod: "Česká literatura 2. poloviny 20. století",
     literaryMovement: "Autobiografická próza",
     genre: "Povídky",
     setting: "Praha a Křivoklátsko",
     summary:
-      "Vzpomínkové příběhy o rodině, válce a dospívání spojují humor s bolestnou zkušeností.",
+      "Autobiograficky laděné povídky mapují dětství vypravěče, rodinné vztahy i válečné pronásledování židovské rodiny. Pavel propojuje poetiku obyčejných radostí s tragickými dějinami a křehkostí paměti.",
     themes: ["rodina", "válka", "paměť", "ztráta"],
     keyCharacters: ["vypravěč Ota", "tatínek Leo", "maminka", "bratři"],
     maturityTips: [
@@ -345,12 +350,13 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
   },
   "valka-s-mloky": {
     year: "1936",
+    originalTitle: "Válka s mloky",
     literaryPeriod: "Meziválečná literatura",
     literaryMovement: "Satirický román",
     genre: "Sci-fi satira",
     setting: "Globální prostor 20. století",
     summary:
-      "Objev inteligentních mloků vede k ekonomickému boomu, který se promění v civilizační katastrofu.",
+      "Po objevu inteligentních mloků je lidstvo využije k levné práci, vojenským i obchodním cílům a nekriticky podporuje jejich expanzi. Satirický román ukazuje, jak chamtivost, propaganda a krátkozraká politika vedou ke globální katastrofě.",
     themes: ["kolonialismus", "kapitalismus", "manipulace médií", "fašismus"],
     keyCharacters: ["Kapitán van Toch", "Bondy", "mloci"],
     maturityTips: [
@@ -361,12 +367,13 @@ export const bookEnrichmentBySlug: Record<string, BookEnrichment> = {
   },
   "ostre-sledovane-vlaky": {
     year: "1965",
+    originalTitle: "Ostře sledované vlaky",
     literaryPeriod: "Česká literatura 60. let",
     literaryMovement: "Hrabalovská poetika",
     genre: "Novela",
     setting: "Nádraží za 2. světové války",
     summary:
-      "Nesmělý elév Miloš Hrma dospívá v prostředí železnice a nakonec vykoná odvážný sabotážní čin.",
+      "Mladý železniční elév Miloš Hrma prožívá během okupace osobní i erotické dospívání v mikrosvětě provinční stanice. Z groteskních každodenních situací vyústí příběh v tragický hrdinský čin sabotáže.",
     themes: ["dospívání", "válka", "banalita každodennosti", "hrdinství"],
     keyCharacters: ["Miloš Hrma", "výpravčí Hubička", "Máša"],
     maturityTips: [
