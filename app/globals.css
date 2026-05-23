@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 21% 97%;
+  --foreground: 222 47% 11%;
+  --primary: 247 88% 65%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 240 17% 92%;
+  --muted-foreground: 240 7% 35%;
+  --border: 240 11% 85%;
+  --input: 240 11% 85%;
+  --ring: 247 88% 65%;
+  --radius: 0.9rem;
+}
+
+.dark {
+  --background: 224 25% 10%;
+  --foreground: 220 14% 96%;
+  --primary: 250 92% 74%;
+  --primary-foreground: 224 25% 10%;
+  --muted: 225 20% 18%;
+  --muted-foreground: 220 10% 70%;
+  --border: 225 20% 24%;
+  --input: 225 20% 24%;
+  --ring: 250 92% 74%;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply min-h-screen bg-background text-foreground;
+}
+
+.glass {
+  @apply border border-white/30 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-white/5;
+}
