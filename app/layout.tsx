@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className="font-sans">
         <Providers>
           <SiteHeader />
-          <main className="mx-auto w-full max-w-6xl px-4 py-8">{children}</main>
+          <main className="mx-auto w-full max-w-7xl px-4 py-8 md:py-10">{children}</main>
         </Providers>
       </body>
     </html>

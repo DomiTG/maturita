@@ -1,22 +1,26 @@
 import { unstable_cache } from "next/cache";
-import { analysisTemplate, requiredBooks } from "@/lib/books";
+import { createBookAnalysis, getBookEnrichment, requiredBooks } from "@/lib/books";
 
 export type CatalogBook = {
   id: string;
   slug: string;
   title: string;
   author: string;
+  year: string;
+  genre: string;
+  literaryPeriod: string;
+  summary: string;
+  source: string;
   verificationNote: string;
 };
 
 export const getBooks = unstable_cache(
   async (): Promise<CatalogBook[]> => {
     return requiredBooks.map((book) => ({
+      ...book,
       id: book.slug,
-      slug: book.slug,
-      title: book.title,
-      author: book.author,
-      verificationNote: analysisTemplate.verificationNote
+      ...getBookEnrichment(book.slug),
+      verificationNote: createBookAnalysis(getBookEnrichment(book.slug)).verificationNote
     }));
   },
   ["books-catalog"],
@@ -33,7 +37,8 @@ export const getBookBySlug = unstable_cache(
 
     return {
       ...book,
-      analysis: analysisTemplate
+      enrichment: getBookEnrichment(book.slug),
+      analysis: createBookAnalysis(getBookEnrichment(book.slug))
     };
   },
   ["book-by-slug"],

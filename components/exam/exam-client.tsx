@@ -189,7 +189,7 @@ export function ExamClient() {
             ref={answerRef}
             value={answer}
             onChange={(event) => setAnswer(event.target.value)}
-            className="min-h-28 w-full rounded-md border bg-background p-3"
+            className="app-input min-h-28 resize-y"
             placeholder="Napiš nebo nadiktuj odpověď v češtině..."
           />
           <Button onClick={submit} disabled={loading || !answer.trim()}>
